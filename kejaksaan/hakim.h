@@ -26,4 +26,15 @@ struct ListHakim {
     adrHakim last;
 };
 
+void createListHakim(ListHakim &L);
+adrHakim createElmHakim(infotypeHakim x);
+void insertFirstHakim(ListHakim &L, adrHakim P);
+void insertLastHakim(ListHakim &L, adrHakim P);
+void insertAfterHakim(ListHakim &L, adrHakim P, adrHakim Prec);
+void deleteFirstHakim(ListHakim &L, adrHakim &P);
+void deleteLastHakim(ListHakim &L, adrHakim &P);    
+void deleteAfterHakim(ListHakim &L, adrHakim &P, adrHakim Prec);
+adrHakim findHakim(ListHakim L, string kode);
+void viewHakim(ListHakim L);
+
 #endif // HAKIM_H_INCLUDED
