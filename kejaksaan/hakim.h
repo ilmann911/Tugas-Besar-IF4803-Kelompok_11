@@ -36,5 +36,7 @@ void deleteLastHakim(ListHakim &L, adrHakim &P);
 void deleteAfterHakim(ListHakim &L, adrHakim &P, adrHakim Prec);
 adrHakim findHakim(ListHakim L, string kode);
 void viewHakim(ListHakim L);
+adrHakim findMaxPengalaman(ListHakim L);
+void countHakim(ListHakim L, int &count);
 
 #endif // HAKIM_H_INCLUDED
