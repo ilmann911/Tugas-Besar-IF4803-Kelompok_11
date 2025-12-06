@@ -23,6 +23,7 @@ struct elmHakim {
 
 struct ListHakim {
     adrHakim first;
+    adrHakim last;
 };
 
 #endif // HAKIM_H_INCLUDED
