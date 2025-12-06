@@ -17,7 +17,7 @@ typedef struct elmHakim *adrHakim;
 struct elmHakim {
     infotypeHakim info;
     adrHakim next;
-
+    adrhakim prev;
     adrTerdakwa child;
 };
 
