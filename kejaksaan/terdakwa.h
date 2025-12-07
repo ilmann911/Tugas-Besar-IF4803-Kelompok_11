@@ -20,7 +20,8 @@ struct elmTerdakwa {
     adrTerdakwa prev;
 };
 
-void createListTerdakwa(adrHakim P);
+
+void createListChild(adrHakim P);
 adrTerdakwa createElmTerdakwa(infotypeTerdakwa x);
 
 void insertFirstTerdakwa(adrHakim P, adrTerdakwa c);
