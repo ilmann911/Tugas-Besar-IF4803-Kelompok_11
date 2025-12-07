@@ -31,7 +31,7 @@ void insertLastTerdakwa(adrHakim P, adrTerdakwa c) {
             Q = Q->next;
         }
         Q->next = c;
-        c->prev = Q; // DLL logic
+        c->prev = Q;
     }
 }
 
@@ -69,7 +69,7 @@ void deleteLastTerdakwa(adrHakim P, adrTerdakwa &c) {
             Q = Q->next;
         }
         c = Q;
-        if (c->prev == NULL) { // Hanya 1 elemen
+        if (c->prev == NULL) {
             P->nextChild = NULL;
         } else {
             c->prev->next = NULL;
