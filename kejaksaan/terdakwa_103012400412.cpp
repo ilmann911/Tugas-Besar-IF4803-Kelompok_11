@@ -93,7 +93,6 @@ void deleteAfterTerdakwa(adrTerdakwa Prec, adrTerdakwa &c) {
     }
 }
 
-
 adrTerdakwa findTerdakwa(adrHakim P, string noRegistrasi) {
     adrTerdakwa Q = P->nextChild;
     while (Q != nullptr) {

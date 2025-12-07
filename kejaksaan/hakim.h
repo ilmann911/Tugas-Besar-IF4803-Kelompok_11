@@ -38,5 +38,4 @@ void deleteAfterHakim(ListHakim &L, adrHakim &P, adrHakim Prec);
 adrHakim findHakim(ListHakim L, string kode);
 void viewHakim(ListHakim L);
 
-
 #endif // HAKIM_H_INCLUDED
