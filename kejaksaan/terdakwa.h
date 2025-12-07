@@ -2,7 +2,11 @@
 #define TERDAKWA_H_INCLUDED
 
 #include <iostream>
+#include "hakim.h"
+
 using namespace std;
+
+typedef struct elmTerdakwa *adrTerdakwa;
 
 struct infotypeTerdakwa {
     string noRegistrasi;
@@ -10,29 +14,24 @@ struct infotypeTerdakwa {
     string tuntutan;
 };
 
-typedef struct elmTerdakwa *adrTerdakwa;
-
 struct elmTerdakwa {
     infotypeTerdakwa info;
     adrTerdakwa next;
+    adrTerdakwa prev;
 };
 
-struct ListTerdakwa {
-    adrTerdakwa first;
-};
-
-void createListTerdakwa(ListTerdakwa &L);
+void createListTerdakwa(adrHakim P);
 adrTerdakwa createElmTerdakwa(infotypeTerdakwa x);
-void insertFirstTerdakwa(ListTerdakwa &L, adrTerdakwa P);
-void insertLastTerdakwa(ListTerdakwa &L, adrTerdakwa P);
-void insertAfterTerdakwa(ListTerdakwa &L, adrTerdakwa P, adrTerdakwa Prec);
-void deleteFirstTerdakwa(ListTerdakwa &L, adrTerdakwa &P);
-void deleteLastTerdakwa(ListTerdakwa &L, adrTerdakwa &P);    
-void deleteAfterTerdakwa(ListTerdakwa &L, adrTerdakwa &P, adrTerdakwa Prec);
-adrTerdakwa findTerdakwa(ListTerdakwa L, string noRegistrasi);
-void viewTerdakwa(ListTerdakwa L);
-void countTerdakwa(ListTerdakwa L, int &count);
 
+void insertFirstTerdakwa(adrHakim P, adrTerdakwa c);
+void insertLastTerdakwa(adrHakim P, adrTerdakwa c);
+void insertAfterTerdakwa(adrTerdakwa Prec, adrTerdakwa c);
 
+void deleteFirstTerdakwa(adrHakim P, adrTerdakwa &c);
+void deleteLastTerdakwa(adrHakim P, adrTerdakwa &c);
+void deleteAfterTerdakwa(adrTerdakwa Prec, adrTerdakwa &c);
+
+adrTerdakwa findTerdakwa(adrHakim P, string noRegistrasi);
+void viewTerdakwa(adrHakim P);
 
 #endif // TERDAKWA_H_INCLUDED
