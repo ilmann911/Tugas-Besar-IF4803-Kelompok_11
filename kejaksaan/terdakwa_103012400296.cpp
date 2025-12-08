@@ -1,44 +1,116 @@
-#include "hakim.h"
 #include "terdakwa.h"
-#include "relation.h"
-
 #include <iostream>
 
 using namespace std;
 
-void createListTerdakwa(ListTerdakwa &L){
-    L.first = NULL;
+void createListChild(adrHakim P) {
+    P->nextChild = nullptr;
 }
-adrTerdakwa createElmTerdakwa(infotypeTerdakwa x){
+
+adrTerdakwa createElmTerdakwa(infotypeTerdakwa x) {
     adrTerdakwa P = new elmTerdakwa;
     P->info = x;
-    P->next = NULL;
+    P->next = nullptr;
+    P->prev = nullptr;
     return P;
 }
-void insertFirstTerdakwa(ListTerdakwa &L, adrTerdakwa P){
-    if(L.first == NULL){
-        L.first = P;
+
+void insertFirstTerdakwa(adrHakim P, adrTerdakwa c) {
+    if (P->nextChild == nullptr) {
+        P->nextChild = c;
     } else {
-        P->next = L.first;
-        L.first = P;
+        c->next = P->nextChild;
+        P->nextChild->prev = c;
+        P->nextChild = c;
     }
 }
-void insertLastTerdakwa(ListTerdakwa &L, adrTerdakwa P){
-    if(L.first == NULL){
-        L.first = P;
+
+void insertLastTerdakwa(adrHakim P, adrTerdakwa c) {
+    if (P->nextChild == nullptr) {
+        P->nextChild = c;
     } else {
-        adrTerdakwa Q = L.first;
-        while(Q->next != NULL){
+        adrTerdakwa Q = P->nextChild;
+        while (Q->next != nullptr) {
             Q = Q->next;
         }
-        Q->next = P;
+        Q->next = c;
+        c->prev = Q; // DLL logic
     }
 }
-void insertAfterTerdakwa(ListTerdakwa &L, adrTerdakwa P, adrTerdakwa Prec){
+
+void insertAfterTerdakwa(adrTerdakwa Prec, adrTerdakwa c) {
+    c->next = Prec->next;
+    c->prev = Prec;
+    Prec->next = c;
+    if (c->next != nullptr) {
+        c->next->prev = c;
+    }
 }
-void deleteFirstTerdakwa(ListTerdakwa &L, adrTerdakwa &P);
-void deleteLastTerdakwa(ListTerdakwa &L, adrTerdakwa &P);    
-void deleteAfterTerdakwa(ListTerdakwa &L, adrTerdakwa &P, adrTerdakwa Prec);
-adrTerdakwa findTerdakwa(ListTerdakwa L, string noRegistrasi);
-void viewTerdakwa(ListTerdakwa L);
-void countTerdakwa(ListTerdakwa L, int &count);
+
+void deleteFirstTerdakwa(adrHakim P, adrTerdakwa &c) {
+    if (P->nextChild == nullptr) {
+        c = nullptr;
+        cout << "Tidak ada terdakwa" << endl;
+    } else if (P->nextChild->next == nullptr) {
+        c = P->nextChild;
+        P->nextChild = nullptr;
+    } else {
+        c = P->nextChild;
+        P->nextChild = c->next;
+        P->nextChild->prev = nullptr;
+        c->next = nullptr;
+    }
+}
+
+void deleteLastTerdakwa(adrHakim P, adrTerdakwa &c) {
+    if (P->nextChild == nullptr) {
+        c = nullptr;
+        cout << "Tidak ada terdakwa" << endl;
+    } else {
+        adrTerdakwa Q = P->nextChild;
+        while (Q->next != nullptr) {
+            Q = Q->next;
+        }
+        c = Q;
+        if (c->prev == nullptr) {
+            P->nextChild = nullptr;
+        } else {
+            c->prev->next = nullptr;
+            c->prev = nullptr;
+        }
+    }
+}
+
+void deleteAfterTerdakwa(adrTerdakwa Prec, adrTerdakwa &c) {
+    c = Prec->next;
+    if (c != nullptr) {
+        Prec->next = c->next;
+        if (c->next != nullptr) {
+            c->next->prev = Prec;
+        }
+        c->next = nullptr;
+        c->prev = nullptr;
+    }
+}
+
+adrTerdakwa findTerdakwa(adrHakim P, string noRegistrasi) {
+    adrTerdakwa Q = P->nextChild;
+    while (Q != nullptr) {
+        if (Q->info.noRegistrasi == noRegistrasi) {
+            return Q;
+        }
+        Q = Q->next;
+    }
+    return nullptr;
+}
+
+void viewTerdakwa(adrHakim P) {
+    adrTerdakwa Q = P->nextChild;
+    if (Q == nullptr) {
+        cout << "   (Tidak ada terdakwa)" << endl;
+    }
+    while (Q != nullptr) {
+        cout << "   - " << Q->info.nama << " (" << Q->info.tuntutan << ")" << endl;
+        Q = Q->next;
+    }
+}
