@@ -27,11 +27,9 @@ void menuAdmin(ListHakim &L) {
         switch (pilihan)
         {
             case 1:
-                cout << "Kamu masuk ke Menu Hakim." << endl;
                 menuHakim(L);
                 continue;
             case 2:
-                cout << "Kamu masuk ke Menu Terdakwa." << endl;
                 menuTerdakwa(L);
                 continue;
             default:
@@ -70,23 +68,32 @@ void menuHakim(ListHakim &L) {
             {
                 case 1:
                     cout << "Insert First Hakim" << endl;
-                    cin >> x.kode >> x.nama >> x.pengalaman;
+                    cout << "Masukkan data Hakim baru: " << endl;
+                    cout << "Kode: "; cin >> x.kode >> endl;
+                    cout << "Nama: "; cin >> x.nama >> endl;
+                    cout << "Pengalaman (tahun): "; cin >> x.pengalaman >> endl;
                     P = createElmHakim(x);
                     insertFirstHakim(L, P);
                     cout << "Hakim berhasil ditambahkan di awal list." << endl;
                     break;
                 case 2:
                     cout << "Insert Last Hakim" << endl;
-                    cin >> x.kode >> x.nama >> x.pengalaman;
+                    cout << "Masukkan data Hakim baru: " << endl;
+                    cout << "Kode: "; cin >> x.kode >> endl;
+                    cout << "Nama: "; cin >> x.nama >> endl;
+                    cout << "Pengalaman (tahun): "; cin >> x.pengalaman >> endl;
                     P = createElmHakim(x);
                     insertLastHakim(L, P);
                     cout << "Hakim berhasil ditambahkan di akhir list." << endl;
                     break;
                 case 3:
                     cout << "Insert After Hakim" << endl;
+                    cout << "Masukkan kode hakim sebelumnya: ";
                     cin >> kodePrec;
-                    cout << "Masukkan data Hakim baru: ";
-                    cin >> x.kode >> x.nama >> x.pengalaman;
+                    cout << "Masukkan data Hakim baru: " << endl;
+                    cout << "Kode: "; cin >> x.kode >> endl;
+                    cout << "Nama: "; cin >> x.nama >> endl;
+                    cout << "Pengalaman (tahun): "; cin >> x.pengalaman >> endl;
                     P = createElmHakim(x);
                     PrecHakim = findHakim(L, kodePrec);
                     if (PrecHakim != nullptr) {
@@ -108,6 +115,7 @@ void menuHakim(ListHakim &L) {
                     break;
                 case 6:
                     cout << "Delete After Hakim" << endl;
+                    cout << "Masukkan kode hakim sebelumnya: ";
                     cin >> kodePrec;
                     PrecHakim = findHakim(L, kodePrec);
                     if (PrecHakim != nullptr && PrecHakim->next != nullptr) {
@@ -123,6 +131,7 @@ void menuHakim(ListHakim &L) {
                     break;
                 case 8:
                     cout << "Search Hakim" << endl;
+                    cout << "Masukkan kode hakim yang dicari: ";
                     cin >> kodePrec;
                     PrecHakim = findHakim(L, kodePrec);
                     if (PrecHakim != nullptr) {
@@ -176,7 +185,10 @@ void menuTerdakwa(ListHakim &L) {
                     cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
                     break;
                 }else{
-                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
+                    cout << "Masukkan data Terdakwa baru: ";
+                    cout << "No Registrasi: "; cin >> y.noRegistrasi >> endl;
+                    cout << "Nama: "; cin >> y.nama >> endl;
+                    cout << "Tuntutan: "; cin >> y.tuntutan >> endl;
                     Q = createElmTerdakwa(y);
                     insertFirstTerdakwa(parentHakim, Q);
                     cout << "Terdakwa berhasil ditambahkan di awal list." << endl;
@@ -191,7 +203,10 @@ void menuTerdakwa(ListHakim &L) {
                     cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
                     break;
                 }else{
-                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
+                    cout << "Masukkan data Terdakwa baru: ";
+                    cout << "No Registrasi: "; cin >> y.noRegistrasi >> endl;
+                    cout << "Nama: "; cin >> y.nama >> endl;
+                    cout << "Tuntutan: "; cin >> y.tuntutan >> endl;
                     Q = createElmTerdakwa(y);
                     insertLastTerdakwa(parentHakim, Q);
                     cout << "Terdakwa berhasil ditambahkan di akhir list." << endl;
@@ -206,8 +221,10 @@ void menuTerdakwa(ListHakim &L) {
                     cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
                     break;
                 }else{
-                    cout << "Masukkan data Terdakwa baru: ";
-                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
+                    cout << "Masukkan data Terdakwa baru: " << endl;
+                    cout << "No Registrasi: "; cin >> y.noRegistrasi >> endl;
+                    cout << "Nama: "; cin >> y.nama >> endl;
+                    cout << "Tuntutan: "; cin >> y.tuntutan >> endl;
                     Q = createElmTerdakwa(y);
                     cout << "Masukkan no registrasi terdakwa sebelumnya: ";
                     cin >> noRegPrec;
