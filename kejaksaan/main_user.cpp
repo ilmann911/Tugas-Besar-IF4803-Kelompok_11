@@ -4,43 +4,50 @@
 using namespace std;
 
 void menuUser(ListHakim L) {
-   int pilihan = -99;
-   while (pilihan != 0) {
-        system("cls");
+    int pilihan = -99;
+
+    system("cls");
+
+    while (pilihan != 0) {
         cout << "============== MENU STUDY CASE ===============" << endl;
         cout << "1. Menjumlahkan terdakawa dari seorang hakim" << endl;
         cout << "2. Jumlah kasus dari seorang terdakwa" << endl;
         cout << "3. Menampilkan terdakwa dengan jumlah kasus terbanyak" << endl;
         cout << "0. Kembali" << endl;
         cout << "===============================================" << endl;
-    }
-    cout << "Pilihan: ";
-    cin >> pilihan;
-    cout << endl;
-    switch (pilihan)
-    {
-    case 1:
+
+        cout << "Pilihan: ";
+        cin >> pilihan;
+        cout << endl;
+
+        switch (pilihan)
         {
-            string kodeHakim;
-            cout << "Masukkan kode hakim: ";
-            cin >> kodeHakim;
-            adrHakim hakim = findHakim(L, kodeHakim);
-            if (hakim != nullptr) {
-                int jumlahTerdakwa = countTerdakwa(hakim);
-                cout << "Jumlah terdakwa yang ditangani oleh hakim " << hakim->info.nama << " adalah: " << jumlahTerdakwa << endl;
-            } else {
-                cout << "Hakim dengan kode " << kodeHakim << " tidak ditemukan." << endl;
+        case 1:
+            {
+                string kodeHakim;
+                cout << "Masukkan kode hakim: ";
+                cin >> kodeHakim;
+                adrHakim hakim = findHakim(L, kodeHakim);
+                if (hakim != nullptr) {
+                    int jumlahTerdakwa = countTerdakwa(hakim);
+                    cout << "Jumlah terdakwa yang ditangani oleh hakim " << hakim->info.nama << " adalah: " << jumlahTerdakwa << endl;
+                    cout << endl;
+                } else {
+                    cout << "Hakim dengan kode " << kodeHakim << " tidak ditemukan." << endl;
+                    cout << endl;
+                }
             }
+            break;
+
+        default:
+                cout << "Pilihan tidak valid." << endl;
+                system("pause");
+                break;
         }
-        break;
-    
-    default:
-        exit(1);
     }
-   
-   
-   
-   
+
+
+
     /*int pilihan;
     while (pilihan != 0) {
         cout << "========== MENU USER ===========" << endl;
