@@ -49,16 +49,12 @@ adrHakim findHakim(ListHakim L, string kode) {
     return nullptr;
 }
 
-void countTerdakwa(ListHakim L) {
-    adrHakim P = L.first;
-    while (P != nullptr) {
-        int count = 0;
-        adrTerdakwa Q = P->nextChild;
-        while (Q != nullptr) {
-            count++;
-            Q = Q->next;
-        }
-        cout << "Hakim " << P->info.nama << " memiliki " << count << " terdakwa." << endl;
-        P = P->next;
+int countTerdakwa(adrHakim P) {
+    int count = 0;
+    adrTerdakwa Q = P->nextChild;
+    while (Q != nullptr) {
+        count++;
+        Q = Q->next;
     }
+    return count;
 }

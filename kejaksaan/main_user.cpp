@@ -2,7 +2,6 @@
 #include "main.h"
 
 using namespace std;
-ListHakim L;
 
 void menuUser(ListHakim L) {
    int pilihan = -99;
