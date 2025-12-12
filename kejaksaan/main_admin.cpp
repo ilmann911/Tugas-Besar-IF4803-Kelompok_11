@@ -47,8 +47,6 @@ void menuAdmin(ListHakim &L) {
 }
 
 void menuHakim(ListHakim &L) {
-        ListHakim L;
-        adrHakim P;
         int pilihan = -99;
         adrHakim PrecHakim;
         while (pilihan != 0)
