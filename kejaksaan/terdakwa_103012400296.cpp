@@ -20,7 +20,7 @@ void insertLastTerdakwa(adrHakim P, adrTerdakwa c) {
             Q = Q->next;
         }
         Q->next = c;
-        c->prev = Q; // DLL logic
+        c->prev = Q;
     }
 }
 

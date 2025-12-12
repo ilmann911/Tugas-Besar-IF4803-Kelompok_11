@@ -35,7 +35,6 @@ void menuUser(ListHakim L) {
             string noReg;
             cout << "Masukkan No Registrasi Terdakwa: "; cin >> noReg;
 
-            // Mencari Terdakwa di seluruh list Hakim
             adrHakim P = L.first;
             bool found = false;
 

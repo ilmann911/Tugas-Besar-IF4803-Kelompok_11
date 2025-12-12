@@ -54,7 +54,6 @@ void menuAdmin(ListHakim &L) {
             adrHakim P = L.first;
             adrHakim prec = nullptr;
 
-            // Mencari elemen dan predecessor-nya
             while (P != nullptr && P->info.kode != kode) {
                 prec = P;
                 P = P->next;
@@ -82,7 +81,6 @@ void menuAdmin(ListHakim &L) {
             if (H != nullptr) {
                 cout << "Masukkan No Registrasi Terdakwa: "; cin >> noReg;
 
-                // Mencari child dan predecessor-nya secara manual untuk menentukan jenis delete
                 adrTerdakwa C = H->nextChild;
                 adrTerdakwa precC = nullptr;
                 bool found = false;
