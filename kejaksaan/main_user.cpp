@@ -2,6 +2,7 @@
 #include "main.h"
 
 using namespace std;
+ListHakim L;
 
 void menuUser(ListHakim L) {
    int pilihan = -99;
@@ -18,7 +19,18 @@ void menuUser(ListHakim L) {
     switch (pilihan)
     {
     case 1:
-    
+        {
+            string kodeHakim;
+            cout << "Masukkan kode hakim: ";
+            cin >> kodeHakim;
+            adrHakim hakim = findHakim(L, kodeHakim);
+            if (hakim != nullptr) {
+                int jumlahTerdakwa = countTerdakwa(hakim);
+                cout << "Jumlah terdakwa yang ditangani oleh hakim " << hakim->info.nama << " adalah: " << jumlahTerdakwa << endl;
+            } else {
+                cout << "Hakim dengan kode " << kodeHakim << " tidak ditemukan." << endl;
+            }
+        }
         break;
     
     default:
