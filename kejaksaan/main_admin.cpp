@@ -213,7 +213,7 @@ void menuTerdakwa(ListHakim &L) {
                     cin >> noRegPrec;
                     PrecTerdakwa = findTerdakwa(parentHakim, noRegPrec);
                     if (PrecTerdakwa != nullptr) {
-                        insertAfterTerdakwa(parentHakim, Q, PrecTerdakwa);
+                        insertAfterTerdakwa(PrecTerdakwa, Q);
                         cout << "Terdakwa berhasil ditambahkan setelah Terdakwa dengan no registrasi " << noRegPrec << "." << endl;
                     } else {
                         cout << "Terdakwa dengan no registrasi " << noRegPrec << " tidak ditemukan." << endl;
@@ -259,11 +259,12 @@ void menuTerdakwa(ListHakim &L) {
                     cin >> noRegPrec;
                     PrecTerdakwa = findTerdakwa(parentHakim, noRegPrec);
                     if (PrecTerdakwa != nullptr && PrecTerdakwa->next != nullptr) {
-                        deleteAfterTerdakwa(parentHakim, Q, PrecTerdakwa);
+                        deleteAfterTerdakwa(PrecTerdakwa, Q);
                         cout << "Terdakwa dengan no registrasi " << Q->info.noRegistrasi << " berhasil dihapus setelah Terdakwa dengan no registrasi " << noRegPrec << "." << endl;
                     } else {
                         cout << "Terdakwa dengan no registrasi " << noRegPrec << " tidak ditemukan atau tidak memiliki Terdakwa setelahnya." << endl;
                     }
+                }
                 break;
             case 7:
                 cout << " View Terdakwa " << endl;
@@ -305,7 +306,8 @@ void menuTerdakwa(ListHakim &L) {
                 continue;
         }
     }
-    
+}
+   
     
     
     
@@ -420,4 +422,4 @@ void menuTerdakwa(ListHakim &L) {
         }
         cout << endl;
     };*/
-}
+//}
