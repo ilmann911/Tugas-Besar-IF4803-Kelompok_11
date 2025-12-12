@@ -5,7 +5,6 @@ using namespace std;
 
 ListHakim L;
 adrHakim P;
-elmTerdakwa C;
 adrTerdakwa Q;
 infotypeHakim x;
 infotypeTerdakwa y;
@@ -144,6 +143,8 @@ void menuHakim(ListHakim &L) {
     }
     
 void menuTerdakwa(ListHakim &L) {
+    adrHakim parentHakim;
+    string noRegPrec;
     int pilihan = -99;
     adrTerdakwa PrecTerdakwa;
     while (pilihan != 0)
@@ -168,65 +169,131 @@ void menuTerdakwa(ListHakim &L) {
         {
             case 1:
                 cout << "Insert First Terdakwa" << endl;
-                cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
-                Q = createElmTerdakwa(y);
-                insertFirstTerdakwa(C, Q);
-                cout << "Terdakwa berhasil ditambahkan di awal list." << endl;
+                cout << "Masukkan kode hakim: " << endl;
+                cin >> kodePrec;
+                parentHakim = findHakim(L, kodePrec);
+                if (parentHakim == nullptr) {
+                    cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                    break;
+                }else{
+                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
+                    Q = createElmTerdakwa(y);
+                    insertFirstTerdakwa(parentHakim, Q);
+                    cout << "Terdakwa berhasil ditambahkan di awal list." << endl;
+                }
                 break;
             case 2:
                 cout << "Insert Last Terdakwa" << endl;
-                cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
-                Q = createElmTerdakwa(x);
-                insertLastTerdakwa(C, Q);
-                cout << "Terdakwa berhasil ditambahkan di akhir list." << endl;
+                cout << "Masukkan kode hakim: " << endl;
+                cin >> kodePrec;
+                parentHakim = findHakim(L, kodePrec);
+                if (parentHakim == nullptr) {
+                    cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                    break;
+                }else{
+                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
+                    Q = createElmTerdakwa(y);
+                    insertLastTerdakwa(parentHakim, Q);
+                    cout << "Terdakwa berhasil ditambahkan di akhir list." << endl;
+                }
                 break;
             case 3:
                 cout << "Insert After Terdakwa" << endl;
+                cout << "Masukkan kode hakim: " << endl;
                 cin >> kodePrec;
-                cout << "Masukkan data Terdakwa baru: ";
-                cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
-                Q = createElmTerdakwa(y);
-                PrecTerdakwa = findTerdakwa(L, kodePrec);
-                if (PrecTerdakwa != nullptr) {
-                    insertAfterTerdakwa(C, Q, PrecTerdakwa);
-                    cout << "Terdakwa berhasil ditambahkan setelah Terdakwa dengan no registrasi " << kodePrec << "." << endl;
-                } else {
-                    cout << "Terdakwa dengan no registrasi " << kodePrec << " tidak ditemukan." << endl;
+                parentHakim = findHakim(L, kodePrec);
+                if (parentHakim == nullptr) {
+                    cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                    break;
+                }else{
+                    cout << "Masukkan data Terdakwa baru: ";
+                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
+                    Q = createElmTerdakwa(y);
+                    cout << "Masukkan no registrasi terdakwa sebelumnya: ";
+                    cin >> noRegPrec;
+                    PrecTerdakwa = findTerdakwa(parentHakim, noRegPrec);
+                    if (PrecTerdakwa != nullptr) {
+                        insertAfterTerdakwa(parentHakim, Q, PrecTerdakwa);
+                        cout << "Terdakwa berhasil ditambahkan setelah Terdakwa dengan no registrasi " << noRegPrec << "." << endl;
+                    } else {
+                        cout << "Terdakwa dengan no registrasi " << noRegPrec << " tidak ditemukan." << endl;
+                    }
                 }
                 break;
             case 4:
                 cout << "Delete First Terdakwa" << endl;
-                deleteFirstTerdakwa(C, Q);
-                cout << "Terdakwa dengan no registrasi " << P->info.noRegistrasi << " berhasil dihapus dari awal list." << endl;
+                cout << "Masukkan kode hakim: " << endl;
+                cin >> kodePrec;
+                parentHakim = findHakim(L, kodePrec);
+                if (parentHakim == nullptr) {
+                    cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                    break;
+                }else{
+                    deleteFirstTerdakwa(parentHakim, Q);
+                    cout << "Terdakwa dengan no registrasi " << Q->info.noRegistrasi << " berhasil dihapus dari awal list." << endl;
+                }
                 break;
             case 5:
                 cout << "Delete Last Terdakwa" << endl;
-                deleteLastTerdakwa(C, Q);
-                cout << "Terdakwa dengan no registrasi " << P->info.noRegistrasi << " berhasil dihapus dari akhir list." << endl;
+                cout << "Masukkan kode hakim: " << endl;
+                cin >> kodePrec;
+                parentHakim = findHakim(L, kodePrec);
+                if (parentHakim == nullptr) {
+                    cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                    break;
+                }else{
+                    deleteLastTerdakwa(parentHakim, Q);
+                    cout << "Terdakwa dengan no registrasi " << Q->info.noRegistrasi << " berhasil dihapus dari akhir list." << endl;
+                }
                 break;
             case 6:
                 cout << "Delete After Terdakwa" << endl;
-                cin >> kodePrec;
-                PrecTerdakwa = findTerdakwa(C, kodePrec);
-                if (PrecTerdakwa != nullptr && PrecTerdakwa->next != nullptr) {
-                    deleteAfterTerdakwa(C, Q, PrecTerdakwa);
-                    cout << "Terdakwa dengan no registrasi " << P->info.noRegistrasi << " berhasil dihapus setelah Terdakwa dengan no registrasi " << kodePrec << "." << endl;
-                } else {
-                    cout << "Terdakwa dengan no registrasi " << kodePrec << " tidak ditemukan atau tidak memiliki Terdakwa setelahnya." << endl;
-                }
+                cout << "Masukkan kode hakim: " << endl;
+                cin >> kodePrec;    
+                parentHakim = findHakim(L, kodePrec);
+                if (parentHakim == nullptr) {
+                    cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                    break;
+                }else{
+                    cout << "Masukkan no registrasi terdakwa sebelumnya: ";
+                    cin >> noRegPrec;
+                    PrecTerdakwa = findTerdakwa(parentHakim, noRegPrec);
+                    if (PrecTerdakwa != nullptr && PrecTerdakwa->next != nullptr) {
+                        deleteAfterTerdakwa(parentHakim, Q, PrecTerdakwa);
+                        cout << "Terdakwa dengan no registrasi " << Q->info.noRegistrasi << " berhasil dihapus setelah Terdakwa dengan no registrasi " << noRegPrec << "." << endl;
+                    } else {
+                        cout << "Terdakwa dengan no registrasi " << noRegPrec << " tidak ditemukan atau tidak memiliki Terdakwa setelahnya." << endl;
+                    }
                 break;
             case 7:
                 cout << " View Terdakwa " << endl;
-                viewTerdakwa(C);
+                cout << "Masukkan kode hakim: " << endl;
+                cin >> kodePrec;
+                parentHakim = findHakim(L, kodePrec);
+                if (parentHakim == nullptr) {
+                    cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                    break;
+                }else{
+                    viewTerdakwa(parentHakim);  
+                }
                 break;
             case 8:
                 cout << " Search Terdakwa " << endl;
+                cout << "Masukkan kode hakim: " << endl;
                 cin >> kodePrec;
-                PrecTerdakwa = findTerdakwa(C, kodePrec);
-                if (PrecTerdakwa != nullptr) {
-                    cout << "Terdakwa ditemukan: " << PrecTerdakwa->info.nama << ", Tuntutan: " << PrecTerdakwa->info.tuntutan << "." << "dengan no registrasi" << PrecTerdakwa->info.noRegistrasi << endl;
-                } else {
-                    cout << "Terdakwa dengan no registrasi " << kodePrec << " tidak ditemukan." << endl;
+                parentHakim = findHakim(L, kodePrec);
+                if (parentHakim == nullptr) {
+                    cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                    break;
+                }else{
+                    cout << "Masukkan no registrasi terdakwa yang dicari: ";
+                    cin >> noRegPrec;
+                    PrecTerdakwa = findTerdakwa(parentHakim, noRegPrec);
+                    if (PrecTerdakwa != nullptr) {
+                        cout << "Terdakwa ditemukan: " << PrecTerdakwa->info.nama << ", Tuntutan: " << PrecTerdakwa->info.tuntutan << "." << "dengan no registrasi" << PrecTerdakwa->info.noRegistrasi << endl;
+                    } else {
+                        cout << "Terdakwa dengan no registrasi " << noRegPrec << " tidak ditemukan." << endl;
+                    }
                 }
                 break;
             default:
