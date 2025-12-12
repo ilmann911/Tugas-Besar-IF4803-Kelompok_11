@@ -7,6 +7,7 @@
 using namespace std;
 
 void menuAdmin(ListHakim &L);
+void menuHakim(ListHakim &L);
+void menuTerdakwa(ListHakim &L);
 void menuUser(ListHakim L);
-
 #endif // MAIN_H_INCLUDED
