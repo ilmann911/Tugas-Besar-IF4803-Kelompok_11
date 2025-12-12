@@ -15,7 +15,7 @@ void menuAdmin(ListHakim &L) {
     while (pilihan != 0)
     {
         system("cls");
-        cout << "========== MENU ADMIN ==========" << endl;
+        cout << "======== MENU TEST CASE ========" << endl;
         cout << "1. Hakim(Parent)" << endl;
         cout << "2. Terdakwa(Child)" << endl;
         cout << "0. Kembali" << endl;

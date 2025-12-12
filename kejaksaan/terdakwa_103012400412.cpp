@@ -56,3 +56,4 @@ adrTerdakwa findTerdakwa(adrHakim P, string noRegistrasi) {
     }
     return nullptr;
 }
+

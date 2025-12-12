@@ -4,7 +4,31 @@
 using namespace std;
 
 void menuUser(ListHakim L) {
-    int pilihan;
+   int pilihan = -99;
+   system("cls");
+   while (pilihan != 0) {
+        cout << "============== MENU STUDY CASE ===============" << endl;
+        cout << "1. Menjumlahkan terdakawa dari seorang hakim" << endl;
+        cout << "2. Jumlah kasus dari seorang terdakwa" << endl;
+        cout << "3. Menampilkan terdakwa dengan jumlah kasus terbanyak" << endl;
+        cout << "0. Kembali" << endl;
+        cout << "===============================================" << endl;
+    }
+
+    switch (pilihan)
+    {
+    case 1:
+    
+        break;
+    
+    default:
+        break;
+    }
+   
+   
+   
+   
+    /*int pilihan;
     while (pilihan != 0) {
         cout << "========== MENU USER ===========" << endl;
         cout << "1. Lihat Semua Data" << endl;
@@ -54,5 +78,5 @@ void menuUser(ListHakim L) {
             }
         }
         cout << endl;
-    };
+    };*/
 }
