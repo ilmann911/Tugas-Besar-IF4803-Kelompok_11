@@ -46,9 +46,9 @@ void menuAdmin(ListHakim &L) {
 void menuHakim(ListHakim &L) {
         int pilihan = -99;
         adrHakim PrecHakim;
+        system("cls");
         while (pilihan != 0)
         {
-            system("cls");
             cout << "======= MENU HAKIM (PARENT) =======" << endl;
             cout << "1. Insert First" << endl;
             cout << "2. Insert Last" << endl;
@@ -73,6 +73,7 @@ void menuHakim(ListHakim &L) {
                     P = createElmHakim(x);
                     insertFirstHakim(L, P);
                     cout << "Hakim berhasil ditambahkan di awal list." << endl;
+                    cout << endl;
                     break;
                 case 2:
                     cout << "Insert Last Hakim" << endl;
@@ -81,6 +82,7 @@ void menuHakim(ListHakim &L) {
                     P = createElmHakim(x);
                     insertLastHakim(L, P);
                     cout << "Hakim berhasil ditambahkan di akhir list." << endl;
+                    cout << endl;
                     break;
                 case 3:
                     cout << "Insert After Hakim" << endl;
@@ -93,19 +95,23 @@ void menuHakim(ListHakim &L) {
                     if (PrecHakim != nullptr) {
                         insertAfterHakim(L, P, PrecHakim);
                         cout << "Hakim berhasil ditambahkan setelah Hakim dengan kode " << kodePrec << "." << endl;
+                        cout << endl;
                     } else {
                         cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                        cout << endl;
                     }
                     break;
                 case 4:
                     cout << "Delete First Hakim" << endl;
                     deleteFirstHakim(L, P);
                     cout << "Hakim dengan kode " << P->info.kode << " berhasil dihapus dari awal list." << endl;
+                    cout << endl;
                     break;
                 case 5:
                     cout << "Delete Last Hakim" << endl;
                     deleteLastHakim(L, P);
                     cout << "Hakim dengan kode " << P->info.kode << " berhasil dihapus dari akhir list." << endl;
+                    cout << endl;
                     break;
                 case 6:
                     cout << "Delete After Hakim" << endl;
@@ -115,13 +121,16 @@ void menuHakim(ListHakim &L) {
                     if (PrecHakim != nullptr && PrecHakim->next != nullptr) {
                         deleteAfterHakim(L, P, PrecHakim);
                         cout << "Hakim dengan kode " << P->info.kode << " berhasil dihapus setelah Hakim dengan kode " << kodePrec << "." << endl;
+                        cout << endl;
                     } else {
                         cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan atau tidak memiliki Hakim setelahnya." << endl;
+                        cout << endl;
                     }
                     break;
                 case 7:
                     cout << "View Hakim" << endl;  
                     viewHakim(L);
+                    cout << endl;
                     break;
                 case 8:
                     cout << "Search Hakim" << endl;
@@ -129,9 +138,11 @@ void menuHakim(ListHakim &L) {
                     cin >> kodePrec;
                     PrecHakim = findHakim(L, kodePrec);
                     if (PrecHakim != nullptr) {
-                        cout << "Hakim ditemukan: " << PrecHakim->info.nama << ", Pengalaman: " << PrecHakim->info.pengalaman << " tahun." << "dengan kode" << PrecHakim->info.kode << endl;
+                        cout << "Hakim ditemukan: " << PrecHakim->info.nama << ", Pengalaman: " << PrecHakim->info.pengalaman << " tahun,"<< " " << "Kode: " << PrecHakim->info.kode << endl;
+                        cout << endl;
                     } else {
                         cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                        cout << endl;
                     }
                     break;
                 default:
@@ -150,9 +161,9 @@ void menuTerdakwa(ListHakim &L) {
     string noRegPrec;
     int pilihan = -99;
     adrTerdakwa PrecTerdakwa;
+    system("cls");
     while (pilihan != 0)
     {
-        system("cls");
         cout << "====== MENU TERDAKWA (CHILD) ======" << endl;
         cout << "1. Insert First" << endl;
         cout << "2. Insert Last" << endl;
