@@ -7,8 +7,10 @@ int main() {
     ListHakim LH;
     createListHakim(LH);
 
+    loadDataDummy(LH);
+
     int pilihan = -99;
-    
+
     while (pilihan != 0)
     {
         system("cls");
@@ -46,12 +48,6 @@ int main() {
                 break;
         }
     }
-    
-
-
-
-
-
 
     /* do {
         cout << "========================================" << endl;
@@ -84,3 +80,4 @@ int main() {
 
     return 0;
 }
+

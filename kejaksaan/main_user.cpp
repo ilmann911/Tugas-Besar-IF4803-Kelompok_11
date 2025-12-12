@@ -5,8 +5,8 @@ using namespace std;
 
 void menuUser(ListHakim L) {
    int pilihan = -99;
-   system("cls");
    while (pilihan != 0) {
+        system("cls");
         cout << "============== MENU STUDY CASE ===============" << endl;
         cout << "1. Menjumlahkan terdakawa dari seorang hakim" << endl;
         cout << "2. Jumlah kasus dari seorang terdakwa" << endl;
@@ -14,7 +14,9 @@ void menuUser(ListHakim L) {
         cout << "0. Kembali" << endl;
         cout << "===============================================" << endl;
     }
-
+    cout << "Pilihan: ";
+    cin >> pilihan;
+    cout << endl;
     switch (pilihan)
     {
     case 1:
@@ -33,7 +35,7 @@ void menuUser(ListHakim L) {
         break;
     
     default:
-        break;
+        exit(1);
     }
    
    

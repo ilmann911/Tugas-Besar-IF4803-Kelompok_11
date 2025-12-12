@@ -41,4 +41,6 @@ void viewHakim(ListHakim L);
 
 int countTerdakwa(adrHakim P);
 
+void loadDataDummy(ListHakim &L);
+
 #endif // HAKIM_H_INCLUDED
