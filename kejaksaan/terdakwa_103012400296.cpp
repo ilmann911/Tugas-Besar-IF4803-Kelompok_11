@@ -1,3 +1,4 @@
+/*
 #include "terdakwa.h"
 #include <iostream>
 
@@ -114,3 +115,4 @@ void viewTerdakwa(adrHakim P) {
         Q = Q->next;
     }
 }
+*/

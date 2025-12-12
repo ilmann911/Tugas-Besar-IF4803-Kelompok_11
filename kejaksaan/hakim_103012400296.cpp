@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include "hakim.h"
 
@@ -100,4 +101,4 @@ void viewHakim(ListHakim L) {
         P = P->next;
     }
 }
-
+*/

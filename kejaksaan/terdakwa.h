@@ -2,11 +2,12 @@
 #define TERDAKWA_H_INCLUDED
 
 #include <iostream>
+
+typedef struct elmTerdakwa *adrTerdakwa;
+
 #include "hakim.h"
 
 using namespace std;
-
-typedef struct elmTerdakwa *adrTerdakwa;
 
 struct infotypeTerdakwa {
     string noRegistrasi;

@@ -2,11 +2,12 @@
 #define HAKIM_H_INCLUDED
 
 #include <iostream>
+
+typedef struct elmHakim *adrHakim;
+
 #include "terdakwa.h"
 
 using namespace std;
-
-typedef struct elmHakim *adrHakim;
 
 struct infotypeHakim {
     string kode;

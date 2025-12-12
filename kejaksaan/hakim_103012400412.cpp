@@ -93,10 +93,14 @@ adrHakim findHakim(ListHakim L, string kode) {
 
 void viewHakim(ListHakim L) {
     adrHakim P = L.first;
-    while (P != nullptr) {
-        cout << "Hakim: " << P->info.nama << " [" << P->info.kode << "]" << endl;
-        viewTerdakwa(P);
-        cout << "--------------------------------" << endl;
-        P = P->next;
+    if (P == nullptr){
+        cout << "list masih kosong" << endl;
+    } else {
+        while (P != nullptr) {
+            cout << "Hakim: " << P->info.nama << " [" << P->info.kode << "]" << endl;
+            viewTerdakwa(P);
+            cout << "--------------------------------" << endl;
+            P = P->next;
+        }
     }
 }
