@@ -128,7 +128,7 @@ void menuHakim(ListHakim &L) {
                     }
                     break;
                 case 7:
-                    cout << "View Hakim" << endl;  
+                    cout << "View Hakim" << endl;
                     viewHakim(L);
                     cout << endl;
                     break;
@@ -155,7 +155,7 @@ void menuHakim(ListHakim &L) {
             }
         }
     }
-    
+
 void menuTerdakwa(ListHakim &L) {
     adrHakim parentHakim;
     string noRegPrec;
@@ -265,7 +265,7 @@ void menuTerdakwa(ListHakim &L) {
             case 6:
                 cout << "Delete After Terdakwa" << endl;
                 cout << "Masukkan kode hakim: " << endl;
-                cin >> kodePrec;    
+                cin >> kodePrec;
                 parentHakim = findHakim(L, kodePrec);
                 if (parentHakim == nullptr) {
                     cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
@@ -283,17 +283,31 @@ void menuTerdakwa(ListHakim &L) {
                 }
                 break;
             case 7:
-                cout << " View Terdakwa " << endl;
-                cout << "Masukkan kode hakim: " << endl;
-                cin >> kodePrec;
-                parentHakim = findHakim(L, kodePrec);
-                if (parentHakim == nullptr) {
-                    cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
-                    break;
-                }else{
-                    cout << "Daftar Terdakwa di bawah Hakim " << parentHakim->info.nama << ":" << endl; 
-                    viewTerdakwa(parentHakim);
+                {
+                cout << "=== DAFTAR SELURUH TERDAKWA ===" << endl;
+                adrHakim P = L.first;
+                bool adaData = false; // Penanda apakah list kosong atau tidak
+
+                    // 1. Loop ke setiap Hakim (Hanya untuk akses child-nya)
+                while (P != nullptr) {
+                    adrTerdakwa Q = P->nextChild;
+
+                        // 2. Loop ke setiap Terdakwa di dalam Hakim tersebut
+                    while (Q != nullptr) {
+                            // Tampilkan data terdakwa langsung
+                        cout << "- " << Q->info.nama << " (No.Reg: " << Q->info.noRegistrasi << ", Tuntutan: " << Q->info.tuntutan << ", Lama Vonis: " << Q->info.lamaVonis << ")" << endl;
+
+                        adaData = true; // Set true karena kita menemukan minimal 1 data
+                        Q = Q->next;
+                    }
+                    P = P->next;
                 }
+
+                if (!adaData) {
+                    cout << "Belum ada data terdakwa sama sekali." << endl;
+                }
+            }
+                cout << endl;
                 break;
             case 8:
                 cout << " Search Terdakwa " << endl;
@@ -324,10 +338,10 @@ void menuTerdakwa(ListHakim &L) {
         }
     }
 }
-   
-    
-    
-    
+
+
+
+
     /*int pilihan;
     while (pilihan != 0) {
         cout << "========== MENU ADMIN ==========" << endl;
