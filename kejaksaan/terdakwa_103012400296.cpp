@@ -51,14 +51,5 @@ void deleteAfterTerdakwa(adrTerdakwa Prec, adrTerdakwa &c) {
     }
 }
 
-void viewTerdakwa(adrHakim P) {
-    adrTerdakwa Q = P->nextChild;
-    if (Q == nullptr) {
-        cout << "   (Tidak ada terdakwa)" << endl;
-    }
-    while (Q != nullptr) {
-        cout << "   - " << Q->info.nama << " (" << Q->info.tuntutan << ")" << endl;
-        Q = Q->next;
-    }
-}
+
 

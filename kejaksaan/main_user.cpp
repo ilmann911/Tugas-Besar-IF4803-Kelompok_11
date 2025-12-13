@@ -12,7 +12,7 @@ void menuUser(ListHakim L) {
         cout << "============== MENU STUDY CASE ===============" << endl;
         cout << "1. Menjumlahkan terdakawa dari seorang hakim" << endl;
         cout << "2. Jumlah kasus dari seorang terdakwa" << endl;
-        cout << "3. Menampilkan terdakwa" << endl;
+        cout << "3. Menampilkan terdakwa dengan vonis diatas X tahun" << endl;
         cout << "0. Kembali" << endl;
         cout << "===============================================" << endl;
 
@@ -56,8 +56,31 @@ void menuUser(ListHakim L) {
             }
             break;
         case 3:
-            tampilkanTerdakwaUnik(L);
-            cout << endl;
+            {
+                int x;
+                cout << "Masukkan nilai X (tahun): ";
+                cin >> x;
+                cout << "Terdakwa dengan vonis diatas " << x << " tahun:" << endl;
+                adrHakim P = L.first;
+                bool found = false;
+
+                while (P != nullptr) {
+                    adrTerdakwa Q = P->nextChild;
+                    while (Q != nullptr) {
+                        if (Q->info.lamaVonis > x) {
+                            cout << "- " << Q->info.nama << " (Vonis: " << Q->info.lamaVonis << " tahun)" << endl;
+                            found = true;
+                        }
+                        Q = Q->next;
+                    }
+                    P = P->next;
+                }
+
+                if (!found) {
+                    cout << "Tidak ada terdakwa dengan vonis diatas " << x << " tahun." << endl;
+                }
+                cout << endl;
+            }
             break;
         default:
                 if(pilihan != 0)

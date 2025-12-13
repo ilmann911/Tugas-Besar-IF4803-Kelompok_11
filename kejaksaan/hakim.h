@@ -42,7 +42,6 @@ void viewHakim(ListHakim L);
 
 int countTerdakwa(adrHakim P);
 int countKasusTerdakwa(ListHakim L, string t);
-void tampilkanTerdakwaUnik(ListHakim L);
 
 void printAllTerdakwa(ListHakim L);
 

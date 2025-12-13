@@ -34,6 +34,5 @@ void deleteLastTerdakwa(adrHakim P, adrTerdakwa &c);
 void deleteAfterTerdakwa(adrTerdakwa Prec, adrTerdakwa &c);
 
 adrTerdakwa findTerdakwa(adrHakim P, string noRegistrasi);
-void viewTerdakwa(adrHakim P);
 
 #endif // TERDAKWA_H_INCLUDED
