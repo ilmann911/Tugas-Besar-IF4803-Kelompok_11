@@ -12,7 +12,7 @@ void menuUser(ListHakim L) {
         cout << "============== MENU STUDY CASE ===============" << endl;
         cout << "1. Menjumlahkan terdakawa dari seorang hakim" << endl;
         cout << "2. Jumlah kasus dari seorang terdakwa" << endl;
-        cout << "3. Menampilkan terdakwa dengan jumlah kasus terbanyak" << endl;
+        cout << "3. Menampilkan terdakwa" << endl;
         cout << "0. Kembali" << endl;
         cout << "===============================================" << endl;
 
@@ -38,11 +38,34 @@ void menuUser(ListHakim L) {
                 }
             }
             break;
-
+        case 2:
+            {
+                string namaTerdakwa;
+                cout << "Masukkan nama terdakwa: ";
+                cin >> namaTerdakwa;
+                int totalKasus = countKasusTerdakwa(L, namaTerdakwa);
+                if(totalKasus != 0){
+                    cout << "Total kasus yang melibatkan terdakwa " << namaTerdakwa << " adalah: " << totalKasus << endl;
+                    cout << endl;
+                }
+                else{
+                    cout << "Terdakwa dengan nama " << namaTerdakwa << " tidak ditemukan." << endl;
+                    cout << endl;
+                }
+                cout << endl;
+            }
+            break;
+        case 3:
+            tampilkanTerdakwaUnik(L);
+            cout << endl;
+            break;
         default:
-                cout << "Pilihan tidak valid." << endl;
-                system("pause");
-                break;
+                if(pilihan != 0)
+                {
+                    cout << "Pilihan tidak valid." << endl;
+                    system("pause");
+                }
+                continue;
         }
     }
 

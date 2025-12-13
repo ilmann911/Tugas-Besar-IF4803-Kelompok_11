@@ -2,6 +2,7 @@
 #define HAKIM_H_INCLUDED
 
 #include <iostream>
+#include <utility>
 
 typedef struct elmHakim *adrHakim;
 
@@ -40,6 +41,8 @@ adrHakim findHakim(ListHakim L, string kode);
 void viewHakim(ListHakim L);
 
 int countTerdakwa(adrHakim P);
+int countKasusTerdakwa(ListHakim L, string t);
+void tampilkanTerdakwaUnik(ListHakim L);
 
 void loadDataDummy(ListHakim &L);
 

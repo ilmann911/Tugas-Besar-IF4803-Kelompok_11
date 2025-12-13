@@ -191,7 +191,7 @@ void menuTerdakwa(ListHakim &L) {
                     break;
                 }else{
                     cout << "Masukkan data Terdakwa baru: ";
-                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
+                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan >> y.lamaVonis;
                     Q = createElmTerdakwa(y);
                     insertFirstTerdakwa(parentHakim, Q);
                     cout << "Terdakwa berhasil ditambahkan di awal list." << endl;
@@ -207,7 +207,7 @@ void menuTerdakwa(ListHakim &L) {
                     break;
                 }else{
                     cout << "Masukkan data Terdakwa baru: ";
-                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
+                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan >> y.lamaVonis;
                     Q = createElmTerdakwa(y);
                     insertLastTerdakwa(parentHakim, Q);
                     cout << "Terdakwa berhasil ditambahkan di akhir list." << endl;
@@ -223,7 +223,7 @@ void menuTerdakwa(ListHakim &L) {
                     break;
                 }else{
                     cout << "Masukkan data Terdakwa baru: " << endl;
-                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan;
+                    cin >> y.noRegistrasi >> y.nama >> y.tuntutan >> y.lamaVonis;
                     Q = createElmTerdakwa(y);
                     cout << "Masukkan no registrasi terdakwa sebelumnya: ";
                     cin >> noRegPrec;
@@ -291,7 +291,8 @@ void menuTerdakwa(ListHakim &L) {
                     cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
                     break;
                 }else{
-                    viewTerdakwa(parentHakim);  
+                    cout << "Daftar Terdakwa di bawah Hakim " << parentHakim->info.nama << ":" << endl; 
+                    viewTerdakwa(parentHakim);
                 }
                 break;
             case 8:
