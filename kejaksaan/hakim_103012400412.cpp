@@ -55,27 +55,12 @@ void viewHakim(ListHakim L) {
     } else {
         while (P != nullptr) {
             cout << "Hakim: " << P->info.nama << " [" << P->info.kode << "]" << endl;
-            viewTerdakwa(P);
             cout << "--------------------------------" << endl;
             P = P->next;
         }
     }
 }
 
-void viewAllTerdakwa(ListHakim L) {
-    adrHakim P = L.first;
-    cout << "=== SELURUH DATA TERDAKWA ===" << endl;
-    if (P == nullptr){
-        cout << "Tidak ada data hakim." << endl;
-    } else {
-        while (P != nullptr) {
-            cout << "Hakim: " << P->info.nama << " [" << P->info.kode << "]" << endl;
-            viewTerdakwa(P);
-            cout << "--------------------------------" << endl;
-            P = P->next;
-        }
-    }
-}
 
 int countKasusTerdakwa(ListHakim L, string namaTerdakwa) {
     adrHakim P = L.first;
@@ -94,6 +79,29 @@ int countKasusTerdakwa(ListHakim L, string namaTerdakwa) {
         P = P->next;
     }
     return totalKasus;
+}
+
+void viewAllData(ListHakim L) {
+    adrHakim P = L.first;
+    if (P == nullptr) {
+        cout << "List Hakim Kosong" << endl;
+    } else {
+        while (P != nullptr) {
+            cout << "Hakim: " << P->info.nama << " [" << P->info.kode << "]" << endl;
+            cout << "Terdakwa:" << endl;
+            adrTerdakwa Q = P->nextChild;
+            if (Q == nullptr) {
+                cout << "   (Tidak ada terdakwa)" << endl;
+            } else {
+                while (Q != nullptr) {
+                    cout << "   - " << Q->info.nama << " (" << Q->info.tuntutan << ", Lama Vonis: " << Q->info.lamaVonis << " tahun)" << endl;
+                    Q = Q->next;
+                }
+            }
+            cout << "--------------------------------" << endl;
+            P = P->next;
+        }
+    }
 }
 
 

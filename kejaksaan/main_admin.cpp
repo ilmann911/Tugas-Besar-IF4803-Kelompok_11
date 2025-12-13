@@ -18,6 +18,7 @@ void menuAdmin(ListHakim &L) {
         cout << "======== MENU TEST CASE ========" << endl;
         cout << "1. Hakim(Parent)" << endl;
         cout << "2. Terdakwa(Child)" << endl;
+        cout << "3. View Semua Data" << endl;
         cout << "0. Kembali" << endl;
         cout << "================================" << endl;
         cout << "Pilihan: ";
@@ -32,6 +33,8 @@ void menuAdmin(ListHakim &L) {
             case 2:
                 menuTerdakwa(L);
                 continue;
+            case 3:
+                viewAllData(L);
             default:
                 if (pilihan != 0)
                 {

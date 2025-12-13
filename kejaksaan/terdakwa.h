@@ -32,7 +32,6 @@ void insertAfterTerdakwa(adrTerdakwa Prec, adrTerdakwa c);
 void deleteFirstTerdakwa(adrHakim P, adrTerdakwa &c);
 void deleteLastTerdakwa(adrHakim P, adrTerdakwa &c);
 void deleteAfterTerdakwa(adrTerdakwa Prec, adrTerdakwa &c);
-
 adrTerdakwa findTerdakwa(adrHakim P, string noRegistrasi);
 
 #endif // TERDAKWA_H_INCLUDED
