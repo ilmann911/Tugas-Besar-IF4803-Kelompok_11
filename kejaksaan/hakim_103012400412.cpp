@@ -47,6 +47,7 @@ void deleteAfterHakim(ListHakim &L, adrHakim &P, adrHakim Prec) {
 
 void viewHakim(ListHakim L) {
     adrHakim P = L.first;
+    cout << "--------------------------------" << endl;
     if (P == nullptr){
         cout << "list masih kosong" << endl;
     } else {
