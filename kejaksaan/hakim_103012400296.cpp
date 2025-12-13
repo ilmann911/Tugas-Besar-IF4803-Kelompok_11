@@ -58,3 +58,28 @@ int countTerdakwa(adrHakim P) {
     }
     return count;
 }
+
+void printAllTerdakwa(ListHakim L) {
+    cout << "=== DAFTAR SELURUH TERDAKWA ===" << endl;
+    adrHakim P = L.first;
+    bool adaData = false;
+
+    while (P != nullptr) {
+        adrTerdakwa Q = P->nextChild;
+
+        while (Q != nullptr) {
+            cout << "- " << Q->info.nama
+                 << " (No.Reg: " << Q->info.noRegistrasi
+                 << ", Tuntutan: " << Q->info.tuntutan
+                 << ", Lama Vonis: " << Q->info.lamaVonis << ")" << endl;
+
+            adaData = true;
+            Q = Q->next;
+        }
+        P = P->next;
+    }
+
+    if (!adaData) {
+        cout << "Belum ada data terdakwa sama sekali." << endl;
+    }
+}

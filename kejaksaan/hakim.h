@@ -44,6 +44,8 @@ int countTerdakwa(adrHakim P);
 int countKasusTerdakwa(ListHakim L, string t);
 void tampilkanTerdakwaUnik(ListHakim L);
 
+void printAllTerdakwa(ListHakim L);
+
 void loadDataDummy(ListHakim &L);
 
 #endif // HAKIM_H_INCLUDED
