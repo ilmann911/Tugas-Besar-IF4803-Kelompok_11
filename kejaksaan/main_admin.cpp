@@ -34,7 +34,8 @@ void menuAdmin(ListHakim &L) {
                 menuTerdakwa(L);
                 continue;
             case 3:
-                viewAllData(L);
+                alldata(L);
+                continue;
             default:
                 if (pilihan != 0)
                 {
@@ -317,6 +318,12 @@ void menuTerdakwa(ListHakim &L) {
                 continue;
         }
     }
+}
+
+void alldata(ListHakim L) {
+    viewAllData(L);
+    cout << endl;
+    system("pause");
 }
 
 

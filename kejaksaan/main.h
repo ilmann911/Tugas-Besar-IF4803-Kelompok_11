@@ -11,4 +11,5 @@ void menuHakim(ListHakim &L);
 void menuTerdakwa(ListHakim &L);
 void menuUser(ListHakim L);
 void loadDataDummy(ListHakim &L);
+void alldata(ListHakim L);
 #endif // MAIN_H_INCLUDED

@@ -54,7 +54,7 @@ void viewHakim(ListHakim L) {
         cout << "list masih kosong" << endl;
     } else {
         while (P != nullptr) {
-            cout << "Hakim: " << P->info.nama << " [" << P->info.kode << "]" << endl;
+            cout << "Hakim: " << P->info.nama << " [" << P->info.kode << "]" <<  " [" << P->info.pengalaman << "]" << endl;
             cout << "--------------------------------" << endl;
             P = P->next;
         }
