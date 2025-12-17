@@ -83,3 +83,15 @@ void printAllTerdakwa(ListHakim L) {
         cout << "Belum ada data terdakwa sama sekali." << endl;
     }
 }
+
+void insertSortedHakim(ListHakim &L, adrHakim P) {
+    if (L.first == nullptr || P->info.pengalaman < L.first->info.pengalaman) {
+        insertFirstHakim(L, P);
+    } else {
+        adrHakim Q = L.first;
+        while (Q->next != nullptr && Q->next->info.pengalaman <= P->info.pengalaman) {
+            Q = Q->next;
+        }
+        insertAfterHakim(L, P, Q);
+    }
+}

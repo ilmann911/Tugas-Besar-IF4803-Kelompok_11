@@ -13,8 +13,8 @@ void menuUser(ListHakim L) {
         cout << "1. Menjumlahkan terdakawa dari seorang hakim" << endl;
         cout << "2. Mengurutkan hakim berdasarkan pengalaman" << endl;
         cout << "3. Menampilkan terdakwa dengan vonis diatas X tahun" << endl;
-        cout << "4. Menambahkan hakim berdasarkan pengalaman" << endl;
-        cout << "5. Menghapus hakim berdasarkan pengalaman" << endl;
+        cout << "4. Menambahkan hakim dengan pengalaman tertentu" << endl;
+        cout << "5. Menghapus hakim dengan pengalaman tertentu" << endl;
         cout << "6. Menambah terdakwa dengan lama vonis tertentu" << endl;
         cout << "7. Menghapus terdakwa dengan lama vonis tertentu" << endl;
         cout << "8. Mencari hakim dengan terdakwa tertentu" << endl;
@@ -90,12 +90,12 @@ void menuUser(ListHakim L) {
             break;
         case 4:
             {
-                infotypeHakim y;
+                infotypeHakim x;
                 cout << "Masukkan data Hakim baru (kode, nama, pengalaman): ";
-                cin >> y.kode >> y.nama >> y.pengalaman;
-                adrHakim Q = createElmHakim(y);
-                insertSortedHakim(L, Q);
-                cout << "Hakim berhasil ditambahkan berdasarkan pengalaman." << endl;
+                cin >> x.kode >> x.nama >> x.pengalaman;
+                adrHakim P = createElmHakim(x);
+                insertSortedHakim(L, P);
+                cout << "Hakim berhasil ditambahkan." << endl;
                 cout << endl;
             }
             break;
