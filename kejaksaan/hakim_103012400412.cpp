@@ -61,26 +61,6 @@ void viewHakim(ListHakim L) {
     }
 }
 
-
-int countKasusTerdakwa(ListHakim L, string namaTerdakwa) {
-    adrHakim P = L.first;
-    int totalKasus = 0;
-    adrTerdakwa Q;
-
-    while (P != nullptr) {
-        adrTerdakwa Q = P->nextChild;
-        while (Q != nullptr) {
-            if (Q->info.nama == namaTerdakwa) {
-                totalKasus++;
-            }
-            Q = Q->next;
-        }
-
-        P = P->next;
-    }
-    return totalKasus;
-}
-
 void viewAllData(ListHakim L) {
     adrHakim P = L.first;
     if (P == nullptr) {

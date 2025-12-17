@@ -41,7 +41,6 @@ adrHakim findHakim(ListHakim L, string kode);
 void viewHakim(ListHakim L);
 
 int countTerdakwa(adrHakim P);
-int countKasusTerdakwa(ListHakim L, string t);
 
 void viewAllData(ListHakim L);
 
