@@ -28,11 +28,11 @@ int main() {
         switch (pilihan)
         {
             case 1:
-                cout << "Kamu masuk ke Menu Test Case." << endl;
+                //cout << "Kamu masuk ke Menu Test Case." << endl;
                 menuAdmin(LH);
                 break;
             case 2:
-                cout << "Kamu masuk ke Menu Study Case." << endl;
+                //cout << "Kamu masuk ke Menu Study Case." << endl;
                 menuUser(LH);
                 break;
             default:

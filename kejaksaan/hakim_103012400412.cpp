@@ -55,10 +55,11 @@ void viewHakim(ListHakim L) {
     } else {
         while (P != nullptr) {
             cout << "Hakim: " << P->info.nama << " [" << P->info.kode << "]" <<  " [" << P->info.pengalaman << "]" << endl;
-            cout << "--------------------------------" << endl;
+            //cout << "--------------------------------" << endl;
             P = P->next;
         }
     }
+    cout << "--------------------------------" << endl;
 }
 
 void viewAllData(ListHakim L) {

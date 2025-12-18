@@ -72,28 +72,46 @@ void menuHakim(ListHakim &L) {
             {
                 case 1:
                     cout << "Insert First Hakim" << endl;
-                    cout << "Masukkan data Hakim baru: " << endl;
-                    cin >> x.kode >> x.nama >> x.pengalaman;
+                    cout << "-----------------------------------" << endl;
+                    cout << "Masukkan kode hakim baru: ";
+                    cin >> x.kode;
+                    cout << "Masukkan nama hakim baru: ";
+                    cin >> x.nama;
+                    cout << "Masukkan lama pengalaman hakim baru (tahun): ";
+                    cin >> x.pengalaman;
                     P = createElmHakim(x);
                     insertFirstHakim(L, P);
+                    cout << "-----------------------------------" << endl;
                     cout << "Hakim berhasil ditambahkan di awal list." << endl;
                     cout << endl;
                     break;
                 case 2:
                     cout << "Insert Last Hakim" << endl;
-                    cout << "Masukkan data Hakim baru: " << endl;
-                    cin >> x.kode >> x.nama >> x.pengalaman;
+                    cout << "-----------------------------------" << endl;
+                    cout << "Masukkan kode hakim baru: ";
+                    cin >> x.kode;
+                    cout << "Masukkan nama hakim baru: ";
+                    cin >> x.nama;
+                    cout << "Masukkan lama pengalaman hakim baru (tahun): ";
+                    cin >> x.pengalaman;
                     P = createElmHakim(x);
                     insertLastHakim(L, P);
+                    cout << "-----------------------------------" << endl;
                     cout << "Hakim berhasil ditambahkan di akhir list." << endl;
                     cout << endl;
                     break;
                 case 3:
                     cout << "Insert After Hakim" << endl;
+                    cout << "-----------------------------------" << endl;
                     cout << "Masukkan kode hakim sebelumnya: ";
                     cin >> kodePrec;
-                    cout << "Masukkan data Hakim baru: " << endl;
-                    cin >> x.kode >> x.nama >> x.pengalaman;
+                    cout << "Masukkan kode hakim baru: ";
+                    cin >> x.kode;
+                    cout << "Masukkan nama hakim baru: ";
+                    cin >> x.nama;
+                    cout << "Masukkan lama pengalaman hakim baru (tahun): ";
+                    cin >> x.pengalaman;
+                    cout << "-----------------------------------" << endl;
                     P = createElmHakim(x);
                     PrecHakim = findHakim(L, kodePrec);
                     if (PrecHakim != nullptr) {
@@ -108,26 +126,30 @@ void menuHakim(ListHakim &L) {
                 case 4:
                     cout << "Delete First Hakim" << endl;
                     deleteFirstHakim(L, P);
+                    cout << "-----------------------------------" << endl;
                     cout << "Hakim dengan kode " << P->info.kode << " berhasil dihapus dari awal list." << endl;
                     cout << endl;
                     break;
                 case 5:
                     cout << "Delete Last Hakim" << endl;
                     deleteLastHakim(L, P);
+                    cout << "-----------------------------------" << endl;
                     cout << "Hakim dengan kode " << P->info.kode << " berhasil dihapus dari akhir list." << endl;
                     cout << endl;
                     break;
                 case 6:
                     cout << "Delete After Hakim" << endl;
+                    cout << "-----------------------------------" << endl;
                     cout << "Masukkan kode hakim sebelumnya: ";
                     cin >> kodePrec;
+                    cout << "-----------------------------------" << endl;
                     PrecHakim = findHakim(L, kodePrec);
                     if (PrecHakim != nullptr && PrecHakim->next != nullptr) {
                         deleteAfterHakim(L, P, PrecHakim);
                         cout << "Hakim dengan kode " << P->info.kode << " berhasil dihapus setelah Hakim dengan kode " << kodePrec << "." << endl;
                         cout << endl;
                     } else {
-                        cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan atau tidak memiliki Hakim setelahnya." << endl;
+                        cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan atau tidak memiliki hakim setelahnya." << endl;
                         cout << endl;
                     }
                     break;
@@ -138,9 +160,11 @@ void menuHakim(ListHakim &L) {
                     break;
                 case 8:
                     cout << "Search Hakim" << endl;
+                    cout << "-----------------------------------" << endl;
                     cout << "Masukkan kode hakim yang dicari: ";
                     cin >> kodePrec;
                     PrecHakim = findHakim(L, kodePrec);
+                    cout << "-----------------------------------" << endl;
                     if (PrecHakim != nullptr) {
                         cout << "Hakim ditemukan: " << PrecHakim->info.nama << ", Pengalaman: " << PrecHakim->info.pengalaman << " tahun,"<< " " << "Kode: " << PrecHakim->info.kode << endl;
                         cout << endl;
