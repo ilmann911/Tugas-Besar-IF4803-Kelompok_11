@@ -6,8 +6,8 @@ using namespace std;
 void menuUser(ListHakim L) {
     int pilihan = -99;
 
-    ListHakim LH;
-    createListHakim(LH);
+    /*ListHakim LH;
+    createListHakim(LH);*/
 
     loadDataDummy(LH);
 
