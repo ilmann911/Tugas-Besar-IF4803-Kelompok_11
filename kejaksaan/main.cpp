@@ -5,9 +5,6 @@ using namespace std;
 
 int main() {
     ListHakim LH;
-    createListHakim(LH);
-
-    loadDataDummy(LH);
 
     int pilihan = -99;
 
@@ -21,9 +18,23 @@ int main() {
         cout << "2. Study Case" << endl;
         cout << "0. Keluar" << endl;
         cout << "========================================" << endl;
+
         cout << "Pilihan: ";
-        cin >> pilihan;
-        cout << endl;
+
+            if (!(cin >> pilihan)) {
+                cout << "--------------------------------" << endl;
+                cout << "Pilihan tidak valid" << endl;
+                cout << "Silakan coba lagi \n" << endl;
+
+                cin.clear();
+                cin.ignore(10000, '\n');
+                pilihan = -99;
+                system("pause");
+
+                continue;
+            }
+
+            cout << endl;
 
         switch (pilihan)
         {
@@ -38,12 +49,15 @@ int main() {
             default:
                 if (pilihan != 0)
                 {
+                    cout << "---------------------------------------" << endl;
                     cout << "Pilihan tidak valid." << endl;
+                    cout << endl;
                     system("pause");
                 }
                 else
                 {
-                   cout << "Terima kasih telah menggunakan aplikasi."<< endl;
+                    cout << endl;
+                    cout << "Terima kasih telah menggunakan aplikasi."<< endl;
                 }
                 break;
         }

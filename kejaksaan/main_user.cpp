@@ -6,10 +6,15 @@ using namespace std;
 void menuUser(ListHakim L) {
     int pilihan = -99;
 
+    ListHakim LH;
+    createListHakim(LH);
+
+    loadDataDummy(LH);
+
     system("cls");
 
     while (pilihan != 0) {
-        cout << "============== MENU STUDY CASE ===============" << endl;
+        cout << "================ MENU STUDY CASE ================" << endl;
         cout << "1. Menjumlahkan terdakawa dari seorang hakim" << endl;
         cout << "2. Mengurutkan hakim berdasarkan pengalaman" << endl;
         cout << "3. Menampilkan terdakwa dengan vonis diatas X tahun" << endl;
@@ -19,11 +24,24 @@ void menuUser(ListHakim L) {
         cout << "7. Menghapus terdakwa dengan lama vonis tertentu" << endl;
         cout << "8. Mencari hakim dengan terdakwa tertentu" << endl;
         cout << "0. Kembali" << endl;
-        cout << "===============================================" << endl;
+        cout << "=================================================" << endl;
 
         cout << "Pilihan: ";
-        cin >> pilihan;
-        cout << endl;
+
+            if (!(cin >> pilihan)) {
+                cout << "-------------------------------------------------" << endl;
+                cout << "Pilihan tidak valid" << endl;
+                cout << "Silakan coba lagi \n" << endl;
+
+                cin.clear();
+                cin.ignore(10000, '\n');
+                pilihan = -99;
+                system("pause");
+
+                continue;
+            }
+
+            cout << endl;
 
         switch (pilihan)
         {

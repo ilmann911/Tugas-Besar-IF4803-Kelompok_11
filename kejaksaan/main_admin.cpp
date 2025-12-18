@@ -21,8 +21,22 @@ void menuAdmin(ListHakim &L) {
         cout << "3. View Semua Data" << endl;
         cout << "0. Kembali" << endl;
         cout << "================================" << endl;
+
         cout << "Pilihan: ";
-        cin >> pilihan;
+
+        if (!(cin >> pilihan)) {
+            cout << "--------------------------------" << endl;
+            cout << "Pilihan tidak valid" << endl;
+            cout << "Silakan coba lagi \n" << endl;
+
+            cin.clear();
+            cin.ignore(10000, '\n');
+            pilihan = -99;
+            system("pause");
+
+            continue;
+        }
+
         cout << endl;
 
         switch (pilihan)
@@ -39,7 +53,8 @@ void menuAdmin(ListHakim &L) {
             default:
                 if (pilihan != 0)
                 {
-                    cout << "Pilihan tidak valid." << endl;
+                    cout << "--------------------------------" << endl;
+                    cout << "Pilihan tidak valid \n" << endl;
                     system("pause");
                 }
                 continue;
@@ -64,8 +79,22 @@ void menuHakim(ListHakim &L) {
             cout << "8. Search Hakim" << endl;
             cout << "0. Kembali" << endl;
             cout << "===================================" << endl;
+
             cout << "Pilihan: ";
-            cin >> pilihan;
+
+            if (!(cin >> pilihan)) {
+                cout << "--------------------------------" << endl;
+                cout << "Pilihan tidak valid" << endl;
+                cout << "Silakan coba lagi \n" << endl;
+
+                cin.clear();
+                cin.ignore(10000, '\n');
+                pilihan = -99;
+                system("pause");
+
+                continue;
+            }
+
             cout << endl;
 
             switch (pilihan)
@@ -142,33 +171,54 @@ void menuHakim(ListHakim &L) {
                 break;
                 case 4:
                     cout << "Delete First Hakim" << endl;
-                    deleteFirstHakim(L, P);
                     cout << "-----------------------------------" << endl;
-                    cout << "Hakim dengan kode " << P->info.kode << " berhasil dihapus dari awal list." << endl;
+
+                    if (L.first == nullptr) {
+                        cout << "GAGAL: List Hakim Kosong! Tidak ada data yang bisa dihapus." << endl;
+                    } else {
+                        deleteFirstHakim(L, P);
+                        if (P != nullptr) {
+                            cout << "SUKSES: Hakim dengan kode " << P->info.kode << " berhasil dihapus dari awal list." << endl;
+                        }
+                    }
                     cout << endl;
                     break;
                 case 5:
                     cout << "Delete Last Hakim" << endl;
-                    deleteLastHakim(L, P);
                     cout << "-----------------------------------" << endl;
-                    cout << "Hakim dengan kode " << P->info.kode << " berhasil dihapus dari akhir list." << endl;
+
+                    if (L.first == nullptr) {
+                        cout << "GAGAL: List Hakim Kosong! Tidak ada data yang bisa dihapus." << endl;
+                    } else {
+                        deleteLastHakim(L, P);
+                        if (P != nullptr) {
+                            cout << "SUKSES: Hakim dengan kode " << P->info.kode << " berhasil dihapus dari akhir list." << endl;
+                        }
+                    }
                     cout << endl;
                     break;
                 case 6:
                     cout << "Delete After Hakim" << endl;
                     cout << "-----------------------------------" << endl;
-                    cout << "Masukkan kode hakim sebelumnya: ";
-                    cin >> kodePrec;
-                    cout << "-----------------------------------" << endl;
+
                     PrecHakim = findHakim(L, kodePrec);
-                    if (PrecHakim != nullptr && PrecHakim->next != nullptr) {
-                        deleteAfterHakim(L, P, PrecHakim);
-                        cout << "Hakim dengan kode " << P->info.kode << " berhasil dihapus setelah Hakim dengan kode " << kodePrec << "." << endl;
-                        cout << endl;
-                    } else {
-                        cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan atau tidak memiliki hakim setelahnya." << endl;
-                        cout << endl;
+                    if (L.first == nullptr){
+                        cout << "GAGAL: List Hakim Kosong! Tidak ada data yang bisa dihapus." << endl;
+                    }else{
+                        cout << "Masukkan kode hakim sebelumnya (Prec): ";
+                        cin >> kodePrec;
+                        if (PrecHakim == nullptr) {
+                            cout << "GAGAL: Hakim prec (" << kodePrec << ") tidak ditemukan." << endl;
+                        } else if (PrecHakim->next == nullptr) {
+                            cout << "GAGAL: Tidak ada hakim setelah " << kodePrec << " untuk dihapus." << endl;
+                        } else {
+                            deleteAfterHakim(L, P, PrecHakim);
+                            if (P != nullptr) {
+                                cout << "SUKSES: Hakim dengan kode " << P->info.kode << " berhasil dihapus setelah " << kodePrec << "." << endl;
+                            }
+                        }
                     }
+                    cout << endl;
                     break;
                 case 7:
                     cout << "View Hakim" << endl;
@@ -220,9 +270,23 @@ void menuTerdakwa(ListHakim &L) {
         cout << "8. Search Terdakwa" << endl;
         cout << "0. Kembali" << endl;
         cout << "===================================" << endl;
+
         cout << "Pilihan: ";
-        cin >> pilihan;
-        cout << endl;
+
+            if (!(cin >> pilihan)) {
+                cout << "--------------------------------" << endl;
+                cout << "Pilihan tidak valid" << endl;
+                cout << "Silakan coba lagi \n" << endl;
+
+                cin.clear();
+                cin.ignore(10000, '\n');
+                pilihan = -99;
+                system("pause");
+
+                continue;
+            }
+
+            cout << endl;
 
         switch (pilihan)
         {
@@ -321,47 +385,67 @@ void menuTerdakwa(ListHakim &L) {
                 break;
             case 4:
                 cout << "Delete First Terdakwa" << endl;
-                cout << "Masukkan kode hakim: " << endl;
+                cout << "-----------------------------------" << endl;
+                cout << "Masukkan kode hakim: ";
                 cin >> kodePrec;
                 parentHakim = findHakim(L, kodePrec);
+
                 if (parentHakim == nullptr) {
                     cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
-                    break;
-                }else{
-                    deleteFirstTerdakwa(parentHakim, Q);
-                    cout << "Terdakwa dengan no registrasi " << Q->info.noRegistrasi << " berhasil dihapus dari awal list." << endl;
+                } else {
+                    if (parentHakim->nextChild == nullptr) {
+                        cout << "GAGAL: List Terdakwa kosong pada Hakim ini." << endl;
+                    } else {
+                        deleteFirstTerdakwa(parentHakim, Q);
+                        if (Q != nullptr) {
+                            cout << "SUKSES: Terdakwa " << Q->info.nama << " (" << Q->info.noRegistrasi << ") dihapus dari awal." << endl;
+                        }
+                    }
                 }
                 break;
             case 5:
                 cout << "Delete Last Terdakwa" << endl;
-                cout << "Masukkan kode hakim: " << endl;
+                cout << "-----------------------------------" << endl;
+                cout << "Masukkan kode hakim: ";
                 cin >> kodePrec;
                 parentHakim = findHakim(L, kodePrec);
+
                 if (parentHakim == nullptr) {
                     cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
-                    break;
-                }else{
-                    deleteLastTerdakwa(parentHakim, Q);
-                    cout << "Terdakwa dengan no registrasi " << Q->info.noRegistrasi << " berhasil dihapus dari akhir list." << endl;
+                } else {
+                    if (parentHakim->nextChild == nullptr) {
+                        cout << "GAGAL: List Terdakwa kosong pada Hakim ini." << endl;
+                    } else {
+                        deleteLastTerdakwa(parentHakim, Q);
+                        if (Q != nullptr) {
+                            cout << "SUKSES: Terdakwa " << Q->info.nama << " (" << Q->info.noRegistrasi << ") dihapus dari akhir." << endl;
+                        }
+                    }
                 }
                 break;
             case 6:
                 cout << "Delete After Terdakwa" << endl;
-                cout << "Masukkan kode hakim: " << endl;
+                cout << "-----------------------------------" << endl;
+                cout << "Masukkan kode hakim: ";
                 cin >> kodePrec;
                 parentHakim = findHakim(L, kodePrec);
+
                 if (parentHakim == nullptr) {
                     cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
-                    break;
-                }else{
-                    cout << "Masukkan no registrasi terdakwa sebelumnya: ";
+                } else {
+                    cout << "Masukkan no registrasi terdakwa sebelumnya (Prec): ";
                     cin >> noRegPrec;
                     PrecTerdakwa = findTerdakwa(parentHakim, noRegPrec);
-                    if (PrecTerdakwa != nullptr && PrecTerdakwa->next != nullptr) {
-                        deleteAfterTerdakwa(PrecTerdakwa, Q);
-                        cout << "Terdakwa dengan no registrasi " << Q->info.noRegistrasi << " berhasil dihapus setelah Terdakwa dengan no registrasi " << noRegPrec << "." << endl;
+
+                    if (PrecTerdakwa == nullptr) {
+                        cout << "GAGAL: Terdakwa prec (" << noRegPrec << ") tidak ditemukan." << endl;
+                    } else if (PrecTerdakwa->next == nullptr) {
+                        cout << "GAGAL: Tidak ada terdakwa setelah " << noRegPrec << "." << endl;
                     } else {
-                        cout << "Terdakwa dengan no registrasi " << noRegPrec << " tidak ditemukan atau tidak memiliki Terdakwa setelahnya." << endl;
+                        deleteAfterTerdakwa(PrecTerdakwa, Q);
+                        if (Q != nullptr) {
+                             cout << "SUKSES: Terdakwa " << Q->info.nama << " (" << Q->info.noRegistrasi << ") dihapus setelah " << noRegPrec << "." << endl;
+                        }
                     }
                 }
                 break;
