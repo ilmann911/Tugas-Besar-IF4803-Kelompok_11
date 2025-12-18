@@ -235,16 +235,20 @@ void menuHakim(ListHakim &L) {
                 case 8:
                     cout << "Search Hakim" << endl;
                     cout << "-----------------------------------" << endl;
-                    cout << "Masukkan kode hakim yang dicari: ";
-                    cin >> kodePrec;
-                    PrecHakim = findHakim(L, kodePrec);
-                    cout << "-----------------------------------" << endl;
-                    if (PrecHakim != nullptr) {
-                        cout << "Hakim ditemukan: " << PrecHakim->info.nama << ", Pengalaman: " << PrecHakim->info.pengalaman << " tahun,"<< " " << "Kode: " << PrecHakim->info.kode << endl;
-                        cout << endl;
-                    } else {
-                        cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
-                        cout << endl;
+                    if (L.first == nullptr){
+                        cout << "List kosong \n" << endl;
+                    }else{
+                        cout << "Masukkan kode hakim yang dicari: ";
+                        cin >> kodePrec;
+                        PrecHakim = findHakim(L, kodePrec);
+                        cout << "-----------------------------------" << endl;
+                        if (PrecHakim != nullptr) {
+                            cout << "Hakim ditemukan: " << PrecHakim->info.nama << ", Pengalaman: " << PrecHakim->info.pengalaman << " tahun,"<< " " << "Kode: " << PrecHakim->info.kode << endl;
+                            cout << endl;
+                        } else {
+                            cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                            cout << endl;
+                        }
                     }
                     break;
                 default:
@@ -467,21 +471,26 @@ void menuTerdakwa(ListHakim &L) {
                 cout << endl;
                 break;
             case 8:
-                cout << " Search Terdakwa " << endl;
-                cout << "Masukkan kode hakim: " << endl;
-                cin >> kodePrec;
-                parentHakim = findHakim(L, kodePrec);
-                if (parentHakim == nullptr) {
-                    cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
-                    break;
+                cout << "Search Terdakwa " << endl;
+                cout << "-----------------------------------" << endl;
+                if (L.first == nullptr){
+                    cout << "List kosong \n" << endl;
                 }else{
-                    cout << "Masukkan no registrasi terdakwa yang dicari: ";
-                    cin >> noRegPrec;
-                    PrecTerdakwa = findTerdakwa(parentHakim, noRegPrec);
-                    if (PrecTerdakwa != nullptr) {
-                        cout << "Terdakwa ditemukan: " << PrecTerdakwa->info.nama << ", Tuntutan: " << PrecTerdakwa->info.tuntutan << "." << "dengan no registrasi" << PrecTerdakwa->info.noRegistrasi << endl;
-                    } else {
-                        cout << "Terdakwa dengan no registrasi " << noRegPrec << " tidak ditemukan." << endl;
+                    cout << "Masukkan kode hakim: " << endl;
+                    cin >> kodePrec;
+                    parentHakim = findHakim(L, kodePrec);
+                    if (parentHakim == nullptr) {
+                        cout << "Hakim dengan kode " << kodePrec << " tidak ditemukan." << endl;
+                        break;
+                    }else{
+                        cout << "Masukkan no registrasi terdakwa yang dicari: ";
+                        cin >> noRegPrec;
+                        PrecTerdakwa = findTerdakwa(parentHakim, noRegPrec);
+                        if (PrecTerdakwa != nullptr) {
+                            cout << "Terdakwa ditemukan: " << PrecTerdakwa->info.nama << ", Tuntutan: " << PrecTerdakwa->info.tuntutan << "." << "dengan no registrasi" << PrecTerdakwa->info.noRegistrasi << endl;
+                        } else {
+                            cout << "Terdakwa dengan no registrasi " << noRegPrec << " tidak ditemukan." << endl;
+                        }
                     }
                 }
                 break;

@@ -109,9 +109,10 @@ void menuUser(ListHakim L) {
         case 4:
             {
                 infotypeHakim x;
+                adrHakim P;
                 cout << "Masukkan data Hakim baru (kode, nama, pengalaman): ";
                 cin >> x.kode >> x.nama >> x.pengalaman;
-                adrHakim P = createElmHakim(x);
+                P = createElmHakim(x);
                 insertSortedHakim(L, P);
                 cout << "Hakim berhasil ditambahkan." << endl;
                 cout << endl;

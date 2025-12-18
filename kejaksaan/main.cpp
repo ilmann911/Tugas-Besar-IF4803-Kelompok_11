@@ -5,9 +5,9 @@ using namespace std;
 
 int main() {
     ListHakim LH;
-    //createListHakim(LH);
+    createListHakim(LH);
 
-    //loadDataDummy(LH);
+    loadDataDummy(LH);
     int pilihan = -99;
 
     while (pilihan != 0)
